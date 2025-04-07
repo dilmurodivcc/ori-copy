@@ -54,18 +54,14 @@ const Home: React.FC<HomeProps> = ({ categories }) => {
   const [activeAudioSlide, setActiveAudioSlide] = React.useState(0);
   const smallCarouselRef = React.useRef<Slider>(null);
   const navigate = useNavigate();
-  const { books } = useGetBooks();
-  const { toggleModal } = useModalStore();
-  const { audioBooks } = useGetAudioBooks();
   const { isAuthenticated } = useAuthStore();
-  const { bookCategories, isBookCategoriesLoading } = useGetCategories();
+  const { openModal } = useModalStore();
+  const { data: books } = useGetBooks();
+  const { data: audioBooks } = useGetAudioBooks();
+  const { data: fetchedCategories } = useGetCategories();
 
   // Update the API call to use current language
   const currentLang = i18n.language.startsWith('uz') ? 'uz' : i18n.language === 'ru' ? 'ru' : 'en';
-
-  if (isBookCategoriesLoading) {
-    return <div className='small-carusel-container'>Loading</div>;
-  }
 
   const totalPages = books?.results ? Math.ceil(books.results.length / 5) : 0;
   const totalAudioPages = audioBooks?.results ? Math.ceil(audioBooks.results.length / 5) : 0;
@@ -180,7 +176,7 @@ const Home: React.FC<HomeProps> = ({ categories }) => {
   };
 
   const handleCategoryClick = (category: Category) => {
-    // ... existing code ...
+    navigate(`/category/${category.id}`);
   };
 
   return (
@@ -221,15 +217,12 @@ const Home: React.FC<HomeProps> = ({ categories }) => {
                 </button>
                 <div className='small-carusel-container'>
                   <Slider ref={smallCarouselRef} {...smallCarouselSettings} className='carousel small-carousel'>
-                    {!isBookCategoriesLoading &&
-                      bookCategories?.results.map((category) => (
-                        <div key={category.id} className='book-card'>
-                          <div className='book-image'>
-                            <img src={category.image} alt={category.name} />
-                          </div>
-                          <h3>{category[`name_${currentLang}`] || category.name}</h3>
-                        </div>
-                      ))}
+                    {fetchedCategories?.map((category: Category) => (
+                      <div key={category.id} className='category-item' onClick={() => handleCategoryClick(category)}>
+                        <img src={category.image} alt={category.name} />
+                        <span>{category.name}</span>
+                      </div>
+                    ))}
                   </Slider>
                 </div>
               </div>
@@ -245,7 +238,7 @@ const Home: React.FC<HomeProps> = ({ categories }) => {
               if (isAuthenticated) {
                 navigate('/profile');
               } else {
-                toggleModal();
+                openModal();
               }
             }}
           >
@@ -278,13 +271,12 @@ const Home: React.FC<HomeProps> = ({ categories }) => {
             <img src={NextIcon} alt='' />
           </button>
           <Slider ref={sliderRef} {...genreSettings}>
-            {!isBookCategoriesLoading &&
-              bookCategories?.results.map((category) => (
-                <div key={category.id} className='genre-card'>
-                  <img src={category.image} alt={category[`name_${currentLang}`] || category.name} />
-                  <p>{category[`name_${currentLang}`] || category.name}</p>
-                </div>
-              ))}
+            {fetchedCategories?.map((category: Category) => (
+              <div key={category.id} className='category-item' onClick={() => handleCategoryClick(category)}>
+                <img src={category.image} alt={category.name} />
+                <span>{category.name}</span>
+              </div>
+            ))}
           </Slider>
         </div>
       </div>

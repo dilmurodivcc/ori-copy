@@ -26,6 +26,8 @@ const ReadingEpub: React.FC<ReadingEpubProps> = ({ book, style, fontFamily, curr
   const contentsRef = useRef<HTMLDivElement>(null);
   const viewerRef = useRef<any>(null);
   const { updateCurrentPage, currentLocation, toc, updateBook } = useBookStore();
+  const [currentPageNumber, setCurrentPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
   // Close settings when clicking outside
   useEffect(() => {
@@ -85,7 +87,10 @@ const ReadingEpub: React.FC<ReadingEpubProps> = ({ book, style, fontFamily, curr
     }
   };
 
-  const onPageChange = (page: Page) => updateCurrentPage(page);
+  const onPageChange = (page: Page) => {
+    updateCurrentPage(page);
+    setCurrentPageNumber(currentPageNumber + 1);
+  };
 
   const onLocationChange = (loc: string) => {
     if (!viewerRef.current) return;
@@ -271,7 +276,7 @@ const ReadingEpub: React.FC<ReadingEpubProps> = ({ book, style, fontFamily, curr
           ref={viewerRef}
         />
         <div className='page-indicator'>
-          {currentLocation.currentPage}-sahifa/{currentLocation.totalPage} dan
+          Page {currentPageNumber} of {totalPages}
         </div>
       </div>
     </div>
