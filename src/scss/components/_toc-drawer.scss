@@ -1,0 +1,47 @@
+.toc-drawer {
+  width: 300px;
+  .toc-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    img {
+      width: 120px;
+      border-radius: 4px;
+      background: #eee;
+    }
+
+    b {
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    p {
+      font-size: 14px;
+      color: var(--dark-gray);
+    }
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-top: 12px;
+
+    .toc-item {
+      padding: 0.5rem 0;
+      cursor: pointer;
+    }
+
+    .toc-header {
+      display: flex;
+      padding: 24px;
+      img {
+        margin-right: 12px;
+        width: 100px;
+        border-radius: 4px;
+        background: #eee;
+      }
+    }
+  }
+}

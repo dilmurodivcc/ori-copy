@@ -1,0 +1,177 @@
+.ant-modal-content {
+  width: 700px;
+  height: 400px;
+  position: relative;
+  border-radius: 16px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .modal-content {
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 26px;
+    z-index: 20;
+
+    .modal-title {
+      width: 200px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: 0.15px;
+      text-align: center;
+      color: var(--text-primary);
+      margin-bottom: 18px;
+    }
+
+    .otp-input {
+      position: relative;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: start;
+      flex-direction: column;
+      gap: 6px;
+      z-index: 2;
+
+      label {
+        font-family: var(--font3);
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 20px;
+        letter-spacing: 0.1px;
+        vertical-align: middle;
+        color: var(--text-primary);
+      }
+
+      input {
+        position: relative;
+        width: 343px;
+        height: 50px;
+        border: 1px solid var(--border-color);
+        background-color: var(--bg-light);
+        border-radius: 16px;
+        border-width: 1px;
+        padding: 12px;
+        margin-top: 6px;
+        color: var(--text-primary);
+        z-index: 2;
+      }
+    }
+
+
+
+    .send-otp-btn {
+      width: 343px;
+      height: 50px;
+      background: var(--primary);
+      border-radius: 16px;
+      font-weight: 600;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0.15px;
+      color: var(--text-light);
+      margin-top: 10px;
+    }
+  }
+
+
+  .verification-section {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .modal-title {
+      width: 300px;
+      font-weight: 700;
+      font-size: 20px;
+      line-height: 24px;
+      letter-spacing: 0.15px;
+      text-align: center;
+      color: var(--text-primary);
+    }
+
+    .otp-input-field {
+      width: 50px;
+      height: 50px;
+      font-size: 20px;
+      font-weight: bold;
+      text-align: center;
+      border-bottom: 2px solid var(--text-primary);
+      margin: 0 5px;
+      background-color: transparent;
+      outline: none;
+      transition: all 0.2s ease-in-out;
+    }
+
+    .timer-text {
+      font-family: var(--font3);
+      font-weight: 500;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0.15px;
+      margin-top: 15px;
+      color: var(--text-primary);
+    }
+
+    .resend-btn,
+    .change-phone-btn {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+      letter-spacing: 0.15px;  
+      margin-top: 8px;
+      color: var(--modal-link);
+    }
+    .resend-btn {
+      &.disabled-text {
+        color: var(--dark-gray);
+        cursor: not-allowed;
+      }
+    
+      &.active-text {
+        color: var(--modal-link); 
+      }
+    }
+
+    .send-otp-btn {
+      width: 100%;
+      max-width: 300px;
+      height: 50px;
+      background: var(--primary);
+      color: var(--text-light);
+      font-size: 16px;
+      font-weight: bold;
+      border-radius: 12px;
+      border: none;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background 0.2s ease-in-out;
+      margin-bottom: 30px;
+      &:hover {
+        background: var(--modal-btn-hover);
+      }
+    }
+  }
+
+  .ant-modal-close {
+    display: none;
+  }
+
+  .modal-image {
+    width: 600px;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+  }
+
+  .ant-modal-footer {
+    display: none;
+  }
+}

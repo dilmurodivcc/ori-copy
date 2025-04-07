@@ -1,0 +1,10 @@
+{
+    "header": {
+        "home": "Home",
+        "about": "about us",
+        "contact": "contacts",
+        "login": "Log in",
+        "register": "sign up",
+        "audio-books": "audio books"
+    }
+}

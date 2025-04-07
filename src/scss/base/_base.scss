@@ -1,0 +1,21 @@
+html{
+  scroll-behavior: smooth;
+}
+
+
+body {
+  background-color: var(--bg-primary);
+  font-family: var(--font-family);
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: 1290px;
+  margin: 0 auto;
+}
+
+.app-container {
+  min-height: 100vh;
+  
+}
+

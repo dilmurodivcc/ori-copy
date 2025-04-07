@@ -1,0 +1,157 @@
+.sidebar {
+    position: sticky;
+    top: 170px;
+    width: 260px;
+    background: var(--bg-light);
+    padding: 28px 24px 42px 0px;
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+    user-select: none;     
+    -webkit-user-select: none; 
+    -moz-user-select: none;    
+    -ms-user-select: none;  
+    -o-user-select: none;
+
+    .sidebar-link {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        text-decoration: none;
+        transition: 0.3s;
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            padding: 4px;
+            margin-left: 24px;
+            color: var(--primary);
+        }
+
+        span {
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 40px;
+            letter-spacing: 0%;
+            color: var(--text-primary);
+        }
+
+        &.active {
+            color: var(--primary);
+            font-weight: bold;
+            position: relative;
+
+            &::before {
+                content: "";
+                width: 5px;
+                height: 80%;
+                background: var(--primary);
+                position: absolute;
+                left: 0;
+            }
+
+            span {
+                font-weight: 700;
+                font-size: 16px;
+                line-height: 40px;
+                letter-spacing: 0%;
+                color: var(--primary);
+            }
+        }
+    }
+    .sidebar-theme {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        font-size: 16px;
+        cursor: pointer;
+    
+        .icon {
+            width: 24px;
+            height: 24px;
+            padding: 4px;
+            margin-left: 24px;
+            color: var(--primary);
+        }
+    
+        span {
+            width: 150px;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 40px;
+            color: var(--text-primary);
+            transition: color 0.4s ease-in-out, transform 0.3s ease-in-out, opacity 0.4s ease-in-out;
+            opacity: 1;
+        }
+    
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 34px;
+            height: 18px;
+    
+            input {
+                opacity: 0;
+                width: 0;
+                height: 0;
+            }
+    
+            .slider {
+                position: absolute;
+                cursor: pointer;
+                background-color: var(--bg-gray);
+                border-radius: 50px;
+                width: 34px;
+                height: 14px;
+                transition: 0.4s;
+    
+                &:before {
+                    content: "";
+                    position: absolute;
+                    width: 20px;
+                    height: 20px;
+                    left: 0;
+                    bottom: -2px;
+                    background-color: var(--bg-light);
+                    box-shadow: 0px 2px 3px var(--border-color);
+                    border-radius: 50%;
+                    transition: 0.4s;
+                }
+            }
+    
+            input:checked + .slider {
+                background-color: var(--primary);
+            }
+    
+            input:checked + .slider:before {
+                transform: translateX(16px);
+            }
+        }
+        &.dark-mode span {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+    
+        &.light-mode span {
+            opacity: 0;
+            animation: fadeOut 0.8s ease forwards;
+        }
+    }
+    
+}
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

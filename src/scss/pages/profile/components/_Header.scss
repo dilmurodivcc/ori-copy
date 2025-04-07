@@ -1,0 +1,47 @@
+.profile-header {
+    width: 100%;
+    display: flex;
+    align-items: start;
+    gap: 33px;
+    padding: 24px;
+    background-color: var(--bg-light);
+    border-radius: 4px;
+    box-shadow: var(--shadow);
+
+    img {
+        width: 163px;
+        height: 163px;
+        border-radius: 50%;
+        object-fit: cover;
+    }
+
+    &-info {
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+        h3 {
+            font-weight: 700;
+            font-size: 28px;
+            line-height: 40px;
+            letter-spacing: 0%;
+            color: var(--text-secondary);
+        }
+
+        a {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 40px;
+            letter-spacing: 0%;
+            color: var(--text-primary);
+        }
+
+        h5 {
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 24px;
+            letter-spacing: 0.4px;
+            color: var(--dark-gray);
+        }
+    }
+}

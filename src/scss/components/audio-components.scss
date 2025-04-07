@@ -1,0 +1,306 @@
+.audio-component {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+  width: 100%;
+  background: var(--bg-light);
+  border-radius: 12px;
+  padding: 40px 125px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 16px;
+  box-shadow: var(--shadow);
+  animation-name: fade-up;
+  animation-timing-function: linear;
+  animation-duration: 0.3s;
+
+  .main-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+  }
+
+  .audio-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    min-width: 200px;
+
+    .cover-image {
+      width: 48px;
+      height: 48px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    .title {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text-primary);
+    }
+  }
+
+  .control-buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      color: var(--text-secondary);
+      transition: all 0.2s ease;
+
+      &:hover {
+        color: var(--primary);
+        background: rgba(255, 59, 48, 0.1);
+      }
+
+      &.play-btn {
+        width: 48px;
+        height: 48px;
+        background: var(--primary);
+        color: var(--text-light);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        &:hover {
+          background: var(--secondary);
+        }
+
+        svg {
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+  }
+
+  .playlist-btn {
+    justify-self: flex-end;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+    min-width: 40px;
+    position: relative;
+
+    &:hover {
+      color: var(--primary);
+    }
+
+    .speed-dropdown {
+      position: absolute;
+      bottom: 100%;
+      right: 0;
+      margin-bottom: 8px;
+      background: #FFFFFF;
+      width: 360px;
+      height: 260px;
+      border-radius: 12px;
+      box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+      padding: 16px;
+      z-index: 1000;
+      display: none;
+
+      &.show {
+        display: block;
+      }
+
+      .speed-option {
+        padding: 12px 16px;
+        font-size: 16px;
+        color: #333;
+        cursor: pointer;
+        transition: all 0.2s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-radius: 8px;
+
+        &:hover {
+          background: rgba(255, 49, 49, 0.1);
+          color: #FF3131;
+        }
+
+        &.active {
+          color: #FF3131;
+          font-weight: 500;
+          background: rgba(255, 49, 49, 0.1);
+        }
+
+        .check-icon {
+          opacity: 0;
+          color: #FF3131;
+        }
+
+        &.active .check-icon {
+          opacity: 1;
+        }
+      }
+    }
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    color: var(--text-secondary);
+    transition: color 0.2s ease;
+    min-width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      color: var(--primary);
+      svg path {
+        fill: var(--primary);
+      }
+    }
+  }
+
+  .audio-controls {
+    width: 100%;
+
+    .progress-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      position: relative;
+      padding-bottom: 20px;
+
+      .time {
+        font-size: 14px;
+        color: var(--text-secondary);
+        min-width: 45px;
+        position: absolute;
+        margin-top: 20px;
+
+        &:first-child {
+          left: 0;
+        }
+
+        &:last-child {
+          right: 0;
+        }
+      }
+
+      .progress-bar {
+        width: 100%;
+        height: 2px;
+        -webkit-appearance: none;
+        appearance: none;
+        background: #E5E5E5;
+        border-radius: 2px;
+        outline: none;
+        position: relative;
+        cursor: pointer;
+
+        &::-webkit-slider-thumb {
+          -webkit-appearance: none;
+          appearance: none;
+          width: 12px;
+          height: 12px;
+          background: #FF3131;
+          border: 2px solid #fff;
+          border-radius: 50%;
+          cursor: pointer;
+          margin-top: -5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          position: relative;
+          z-index: 2;
+        }
+
+        &::-webkit-slider-runnable-track {
+          width: 100%;
+          height: 2px;
+          background: #E5E5E5;
+          border-radius: 2px;
+          border: none;
+        }
+
+        &::-moz-range-thumb {
+          width: 12px;
+          height: 12px;
+          background: #FF3131;
+          border: 2px solid #fff;
+          border-radius: 50%;
+          cursor: pointer;
+          margin-top: -5px;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        &::-moz-range-track {
+          width: 100%;
+          height: 2px;
+          background: #E5E5E5;
+          border-radius: 2px;
+        }
+
+        &::-moz-range-progress {
+          background: #FF3131;
+          height: 2px;
+          border-radius: 2px;
+        }
+      }
+    }
+  }
+
+  .header-right-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-left: auto;
+  }
+}
+
+// Responsive styles
+@media (max-width: 768px) {
+  .audio-component {
+    padding: 12px;
+    gap: 16px;
+
+    .main-row {
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .audio-info {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .control-buttons {
+      width: 100%;
+      gap: 16px;
+    }
+
+    .playlist-btn {
+      display: none;
+    }
+  }
+}
+
+@keyframes fade-up {
+  from {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
